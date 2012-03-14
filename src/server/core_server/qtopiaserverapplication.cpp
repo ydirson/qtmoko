@@ -746,11 +746,19 @@ bool QtopiaServerApplication::qwsEventFilter(QWSEvent *e)
     return QtopiaApplication::qwsEventFilter(e);
 }
 
+void QtopiaServerApplication::setTraceEvents(bool b)
+{
+    traceEvents = b;
+}
+
 /*!
   \reimp
   */
 bool QtopiaServerApplication::notify( QObject* o, QEvent* e )
 {
+    if (traceEvents) {
+        qLog(UI) << "notify" << o << e << "type:" << e->type() << "spont:" << e->spontaneous();
+    }
     QtopiaApplication::notify(o, e);
     static bool mainWidgetInitPending = true; 
     if ( mainWidgetInitPending ) {
@@ -778,6 +786,9 @@ bool QtopiaServerApplication::notify( QObject* o, QEvent* e )
                 }
             }
         }
+    }
+    if (traceEvents) {
+        qLog(UI) << "/notify" << e; // "<< o" can segfault !?
     }
     return false;
 }

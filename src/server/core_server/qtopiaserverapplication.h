@@ -50,6 +50,7 @@ public:
     void installQWSEventFilter(QWSEventFilter *);
     void removeQWSEventFilter(QWSEventFilter *);
     bool notify( QObject*, QEvent* );
+    void setTraceEvents(bool);
 #endif
 
     // Tasks
@@ -103,6 +104,7 @@ private:
     QByteArray mainWidgetName;
     QValueSpaceObject* serverWidget_vso;
     static void loadTaskPlugins();
+    bool traceEvents;
 };
 
 template<class T>
