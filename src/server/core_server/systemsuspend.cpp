@@ -260,6 +260,7 @@ void SystemSuspendPrivate::operationCompleted()
 {
     if(sender() == waitingOn) {
         qLog(PowerManagement) << " ...operationCompleted for" << waitingOn;
+        QtopiaServerApplication::instance()->setTraceEvents(true);
         waitingOn = 0;
         // post a dumb event to make sure the loop in systemSuspend
         // gets awakened ASAP after waitingOn is changed
@@ -302,8 +303,9 @@ bool SystemSuspendPrivate::suspendSystem()
             while(waitingOn) {
                 QApplication::instance()->processEvents(QEventLoop::AllEvents |
                                                         QEventLoop::WaitForMoreEvents);
-                //qLog(PowerManagement) << "  ...processEvents done";
+                qLog(PowerManagement) << "  ...processEvents done";
             }
+            QtopiaServerApplication::instance()->setTraceEvents(false);
             if (inputEvent) {
                 qLog(PowerManagement) << "canceling suspend on inputevent";
                 break;
@@ -324,6 +326,7 @@ bool SystemSuspendPrivate::suspendSystem()
             while(waitingOn)
                 QApplication::instance()->processEvents(QEventLoop::AllEvents |
                                                         QEventLoop::WaitForMoreEvents);
+            QtopiaServerApplication::instance()->setTraceEvents(false);
         } else {
             waitingOn = 0;
         }

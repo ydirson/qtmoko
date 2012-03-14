@@ -74,6 +74,7 @@ bool NeoSuspend::canSuspend() const
 bool NeoSuspend::suspend()
 {
     qLog(PowerManagement)<< __PRETTY_FUNCTION__;
+    return true;
     
     QProcess::execute("before-suspend.sh");
     
