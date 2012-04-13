@@ -47,7 +47,6 @@ public:
     QWidget *inputWidget( QWidget *parent );
     QWSInputMethod *inputModifier( );
 
-    void menuActionActivated(int v);
 private slots:
     void sendKeyPress( ushort unicode, ushort keycode, ushort modifiers, bool press, bool repeat );
 private:

@@ -97,17 +97,3 @@ void Keyboard::updateHandler(int type)
             break;
     };
 };
-
-void Keyboard::menuActionActivated(int v)
-{
-    qLog(Input) << "void Keyboard::menuItemActivated("<<v<<")";
-    switch(v){
-        case SwapPosition:
-            qLog(Input) << "Keyboard received and recognized menu action";
-            keyboardFrame->swapPosition();
-            break;
-        case Unknown:
-        default:
-            qLog(Input) << "Keyboard IM recieved unrecognised menu action";
-    };
-}

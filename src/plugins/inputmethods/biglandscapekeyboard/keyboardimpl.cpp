@@ -117,11 +117,6 @@ QWSInputMethod *KeyboardInputMethod::inputModifier( )
     return input;
 }
 
-void KeyboardInputMethod::menuActionActivated(int v)
-{
-    input->menuActionActivated(v);
-};
-
 void KeyboardInputMethod::setHint(const QString &hint, bool)
 {
     if(input && hint.isEmpty() && input->frame())

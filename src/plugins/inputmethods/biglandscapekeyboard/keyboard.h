@@ -67,7 +67,6 @@ public:
 
     QWidget* frame();
     void resetState();
-    void menuActionActivated(int v);
 
 signals:
     void stateChanged();
