@@ -48,7 +48,6 @@ public:
     QWSInputMethod *inputModifier( );
 
     void menuActionActivated(int v);
-    QList<QIMActionDescription*> menuDescription();
 private slots:
     void sendKeyPress( ushort unicode, ushort keycode, ushort modifiers, bool press, bool repeat );
 private:

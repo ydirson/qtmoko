@@ -132,29 +132,4 @@ void KeyboardInputMethod::setHint(const QString &hint, bool)
         input->checkMicroFocus();
 }
 
-QList<QIMActionDescription*> KeyboardInputMethod::menuDescription()
-{
-    QList<QIMActionDescription*> descriptionList;
-    QIMActionDescription* keyboardActionDescription = new QIMActionDescription;
-    // First item of more than one is the menu item, and will never be called
-    keyboardActionDescription->setId(Keyboard::RootItem);
-    keyboardActionDescription->setLabel(tr("Keyboard"));
-    keyboardActionDescription->setIconFileName(QString(":icon/keyboard"));
-    descriptionList.append(keyboardActionDescription);
-
-    if(input->frame()->isVisible()){
-        keyboardActionDescription = new QIMActionDescription;        
-        keyboardActionDescription->setId(Keyboard::HideKeyboard);
-        keyboardActionDescription->setLabel(("Hide Keyboard"));
-        keyboardActionDescription->setIconFileName(QString(":icon/stop"));
-        descriptionList.append(keyboardActionDescription);
-    } else {
-        keyboardActionDescription = new QIMActionDescription(Keyboard::ShowKeyboard, tr("Show Keyboard"), QString(":icon/keyboard"));
-        descriptionList.append(keyboardActionDescription);
-    };
-
-    return descriptionList;
-};
-
-
 QTOPIA_EXPORT_PLUGIN(KeyboardInputMethod);
